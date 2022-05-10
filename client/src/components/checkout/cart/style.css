@@ -1,0 +1,365 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+:root {
+    --light-gray: #b8c2cc;
+    --deep-light-gray: #ededed;
+    --gray: #6e6b7b;
+
+    --primary: rgb(115, 103, 240);
+    --secondary: #28c76f;
+    --star: #ff9f43;
+    --danger: #ea5455;
+    
+}   
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    width: 100vw;
+    background-color: #f8f8f8;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    overflow-x: hidden;
+}
+
+h4 {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.secondary {
+    color: var(--secondary)!important;
+}
+
+.primary {
+    color: var(--primary)!important;
+}
+
+.cart-container {
+    width: 100%;
+    padding: 3em;
+}
+
+.process {
+    display: flex;
+    align-items: center;
+    color: var(--light-gray);
+}
+
+.process h4 {
+    margin-right: 2em;
+}
+
+.process i {
+    margin-right: 1em;
+    background-color: var(--deep-light-gray);
+    width: 2.5em;
+    padding: 0.7em;
+    border-radius: 0.5em;
+}
+
+.process h4.active {
+    color: var(--primary); 
+}
+
+.process i.active {
+    color: #fff;
+    background-color: var(--primary);
+}
+
+.cart-content {
+    display: flex;
+    margin: 3em 0;
+}
+
+.cart-product {
+    flex: 2;
+    margin-right: 2em;
+}
+
+.cart-product li {
+    margin-bottom: 2em;
+}
+
+.cart-item {
+    display: flex;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: rgba(34, 41, 47, 0.1) 0px 4px 24px 0px; 
+    transition: ease 0.3s;
+    padding: 1em;
+    margin-top: 25px;
+}
+
+.cart-item:hover {
+    box-shadow: rgba(34, 41, 47, 0.1) 0px 0px 24px 10px; 
+    transform: translateY(-1%);
+}
+
+.cart-item-img {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-item-img img {
+    min-width: 200px;
+    max-width: 100%;
+    height: auto;
+}
+
+.cart-item-detail {
+    flex: 2;
+    border-right: 1px solid var(--light-gray);
+}
+
+.cart-item-detail > * {
+    margin-bottom: 0.5em;
+}
+
+.cart-item-detail h4 {
+    color: var(--gray);
+}
+
+.cart-item-detail h4:hover {
+    color: var(--primary);
+}
+
+.cart-item-detail h5 {
+    color: var(--deep-light-gray);
+    font-size: 0.8rem;
+}
+
+.cart-item-detail h5 span { 
+    color: var(--primary);
+}
+
+.cart-item-detail ul {
+    margin-bottom: 0.5em;
+}
+
+.cart-item-detail li {
+    display: inline;
+    margin-right: 0.1em;
+}
+
+.cart-item-detail i {
+    width: 16px;
+    
+}
+
+.cart-item-detail i.active {
+    color: var(--star); 
+    fill: currentColor;
+}
+
+.cart-item-detail p {
+    color: var(--light-gray);
+}
+
+.qty {
+    display: flex;
+    align-items: center;
+    margin-top: 1.2em;
+    margin-bottom: 1.2em!important;;
+}
+
+.qty p {
+    margin-right: 0.5em;
+}
+
+.qty-btn {
+    border: 1px solid var(--light-gray);
+    border-radius: 5px;
+    color: var(--gray);
+}
+
+
+.qty-btn button {
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+    color: var(--gray);
+
+    margin: 0.2em;
+}
+
+.qty-btn span {
+    border-right: 1px solid var(--deep-light-gray);
+    border-left: 1px solid var(--deep-light-gray);
+    padding: 0 1em;
+    font-size: 0.75rem;
+}
+
+.price {
+    flex: 0.5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    min-width: 150px;
+}
+
+.price > * {
+    margin-bottom: 1em;
+}
+
+.price > h4 {
+    color: var(--primary);
+    font-size: 1.2rem;
+}
+
+.price > h6 {
+    color: rgb(40, 199, 111);
+    background-color: rgba(40,199,111,.12);
+    padding: 0.2em;
+    border-radius: 10px;
+}
+
+/* .btn {
+    padding: 0.75em 0.5em;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    font-family: inherit;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+
+.btn-remove {
+    background-color: #f6f6f6 ;
+    padding: 0.75em 0.5em;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    font-family: inherit;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-wishlist {
+    background-color: var(--primary);
+    color: #fff;
+    transition: ease 0.3s;
+    padding: 0.75em 0.5em;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    font-family: inherit;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-remove:hover {
+    background-color: var(--deep-light-gray);
+    color: rgb(255, 0, 0)
+}
+
+.btn-wishlist:hover {
+    box-shadow: rgba(34, 41, 47, 0.2) 0px 4px 24px 5px;
+    color:#fff
+}
+
+.options {
+    flex: 0.75;
+    background-color: #fff;
+    padding: 1.5em;
+    border-radius: 10px;
+    box-shadow: rgba(34, 41, 47, 0.1) 0px 4px 24px 0px;
+    height: fit-content;
+    margin-top:25px ;
+}
+
+.options > * {
+    margin-bottom: 1.2em;
+}
+
+.options .title {
+    color: var(--light-gray);
+}
+
+.coupon {
+    display: flex;
+    justify-content: space-between;    
+    padding-bottom: 1.2em;
+    border-bottom: 1px solid var(--deep-light-gray);
+}
+
+.coupon h4:nth-of-type(2){
+    color: var(--primary);
+}
+
+.opt-detail {
+    display: flex;
+    justify-content: space-between;    
+    color: var(--gray);
+}
+
+.bottom-line {
+    border-bottom: 1px solid var(--deep-light-gray);
+    padding-bottom: 1.2em;
+}
+
+.btn-buy {
+    position: fixed;
+    bottom: 20px;
+    right: 50px;
+    border: none;
+    background-color: var(--danger);
+    padding: 0.8em 1.5em;
+    border-radius: 10px;
+    box-shadow: var(--danger) 0px 1px 20px 1px;
+    color: #fff;
+    font-family: inherit;
+    font-weight: 600;
+    transition: ease 0.3s;
+}
+
+.btn-buy:hover {
+    box-shadow: none;
+}
+
+@media (max-width: 1024px) {
+    .content {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .item {
+        flex-direction: column;
+    }
+    .detail {
+        border: none;
+    }
+    .process-seperate {
+        display: none;
+    }
+}

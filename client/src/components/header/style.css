@@ -1,0 +1,22 @@
+.header-container{
+    background-color: var(--primary);
+    margin-bottom: 3rem ;
+}
+.logo{
+    font-size: 20px;
+    font-weight: bolder;
+}
+.btn-search{
+    background-color:#00bbf9;
+    color: #fff;
+    transition: ease 0.3s;
+    padding: 0.75em 0.5em;
+    border: none;
+    border-radius: 5px;
+    font-family: inherit;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+

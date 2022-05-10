@@ -1,0 +1,22 @@
+
+.content{
+    margin: 20px;
+    .sidebar{
+        background-color: white;
+        padding-left: 0;
+        padding-right: 0;
+        border: 2px solid  rgb(236, 235, 235);
+        margin-bottom: 20px;
+    }
+    .products{
+        .item{
+            margin-bottom: 20px ;
+        }
+        .searchbar{
+            margin-bottom: 20px;
+            .form-control:focus {
+                box-shadow: none;
+            }
+        }
+    }
+}

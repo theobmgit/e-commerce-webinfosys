@@ -1,0 +1,31 @@
+.filter{
+    .brand-filter{       
+        .form-check{
+            .form-check-input :focus{
+                outline: 0;
+            }
+        }
+    }
+}
+.filter-name{
+    font-size: large;
+    font-weight: bolder;
+}
+.btn-container{
+    display: flex;
+    justify-content: center;
+  .btn-filter{
+    background-color: var(--primary);
+    color: #fff;
+    transition: ease 0.3s;
+    padding: 0.75em 0.5em;
+    width: 75%;
+    border: none;
+    border-radius: 5px;
+    font-family: inherit;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}  
+}
