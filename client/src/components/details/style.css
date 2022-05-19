@@ -1,23 +1,22 @@
-.div1 {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.mt-1 {
-  display: flex;
-  flex-direction: column;
-}
 .btn-add {
-    background-color:rgb(115, 103, 240);
+    background-color: var(--secondary)!important;
     color: #fff;
-    transition: ease 0.3s;
     padding: 0.75em 0.5em;
-    border: none;
-    border-radius: 5px;
-    font-family: inherit;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 10px;
+    border-radius: 1rem;
+    border: 1px var(--secondary) solid !important;
+}
+
+.btn-love:hover {
+    background-color: black!important;
+    color: white!important;
+}
+
+.item-price {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.card-image {
+    background-color: white;
 }

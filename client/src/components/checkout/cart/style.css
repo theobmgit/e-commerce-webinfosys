@@ -1,50 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-
-:root {
-    --light-gray: #b8c2cc;
-    --deep-light-gray: #ededed;
-    --gray: #6e6b7b;
-
-    --primary: rgb(115, 103, 240);
-    --secondary: #28c76f;
-    --star: #ff9f43;
-    --danger: #ea5455;
-    
-}   
-
-* {
-    margin: 0;
-    box-sizing: border-box;
-}
-
-
-body {
-    width: 100vw;
-    background-color: #f8f8f8;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
-    overflow-x: hidden;
-}
-
-h4 {
-    font-size: 14px;
-    font-weight: 600;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-button {
-    cursor: pointer;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
 .secondary {
     color: var(--secondary)!important;
 }
@@ -56,33 +9,7 @@ a {
 .cart-container {
     width: 100%;
     padding: 3em;
-}
-
-.process {
-    display: flex;
-    align-items: center;
-    color: var(--light-gray);
-}
-
-.process h4 {
-    margin-right: 2em;
-}
-
-.process i {
-    margin-right: 1em;
-    background-color: var(--deep-light-gray);
-    width: 2.5em;
-    padding: 0.7em;
-    border-radius: 0.5em;
-}
-
-.process h4.active {
-    color: var(--primary); 
-}
-
-.process i.active {
-    color: #fff;
-    background-color: var(--primary);
+    color: black;
 }
 
 .cart-content {
@@ -103,14 +30,14 @@ a {
     display: flex;
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: rgba(34, 41, 47, 0.1) 0px 4px 24px 0px; 
+    box-shadow: rgba(34, 41, 47, 0.1) 0 4px 24px 0;
     transition: ease 0.3s;
     padding: 1em;
     margin-top: 25px;
 }
 
 .cart-item:hover {
-    box-shadow: rgba(34, 41, 47, 0.1) 0px 0px 24px 10px; 
+    box-shadow: rgba(34, 41, 47, 0.1) 0 0 24px 10px;
     transform: translateY(-1%);
 }
 
@@ -172,15 +99,11 @@ a {
     fill: currentColor;
 }
 
-.cart-item-detail p {
-    color: var(--light-gray);
-}
-
 .qty {
     display: flex;
     align-items: center;
     margin-top: 1.2em;
-    margin-bottom: 1.2em!important;;
+    margin-bottom: 1.2em!important;
 }
 
 .qty p {
@@ -190,7 +113,8 @@ a {
 .qty-btn {
     border: 1px solid var(--light-gray);
     border-radius: 5px;
-    color: var(--gray);
+    display: flex;
+    align-items: center;
 }
 
 
@@ -198,8 +122,6 @@ a {
     background-color: transparent;
     border: none;
     font-size: 1rem;
-    color: var(--gray);
-
     margin: 0.2em;
 }
 
@@ -235,19 +157,6 @@ a {
     padding: 0.2em;
     border-radius: 10px;
 }
-
-/* .btn {
-    padding: 0.75em 0.5em;
-    width: 100%;
-    border: none;
-    border-radius: 5px;
-    font-family: inherit;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-} */
-
 
 .btn-remove {
     background-color: #f6f6f6 ;
@@ -301,10 +210,6 @@ a {
     margin-bottom: 1.2em;
 }
 
-.options .title {
-    color: var(--light-gray);
-}
-
 .coupon {
     display: flex;
     justify-content: space-between;    
@@ -319,7 +224,6 @@ a {
 .opt-detail {
     display: flex;
     justify-content: space-between;    
-    color: var(--gray);
 }
 
 .bottom-line {
@@ -359,7 +263,7 @@ a {
     .detail {
         border: none;
     }
-    .process-seperate {
+    .process-separate {
         display: none;
     }
 }

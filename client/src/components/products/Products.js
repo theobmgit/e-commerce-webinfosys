@@ -8,48 +8,53 @@ import Footer from '../footer'
 import {useDispatch, useSelector} from 'react-redux'
 import {fetchData} from '../../redux/storeSlice'
 
-import './style.scss'
+import './style.css'
 
 const Products = () => {
     const products = useSelector(state => state.store.products)
     const dispatch = useDispatch()
-    const [displayProducts, setDisplayProducts] = useState(products)
+    const [displayProducts, setDisplayProducts] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
-    const [itemsPerPage] = useState(9)
+    const [itemsPerPage] = useState(15)
 
     useEffect(() => {
         dispatch(fetchData())
-    }, [dispatch])
+        setDisplayProducts(products)
+    }, [products.length])
+
+    useEffect(() => {
+        console.log(displayProducts)
+    }, [displayProducts])
 
     // Get current items
     const indexOfLastItem = currentPage * itemsPerPage
     const indexOfFirstItem = indexOfLastItem - itemsPerPage
     const currentItems = displayProducts.slice(indexOfFirstItem, indexOfLastItem)
 
-    // Change page
     const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
     const newProduct = currentItems.map((item) => {
         return (
-            <div key={item.product_id} className='col-4 item'>
+            <div key={item.product_id} className='col-4'>
                 <Item {...item} />
             </div>
         )
     })
+
     return (
         <>
             <Header setDisplay={setDisplayProducts}/>
-            <div className='row justify-content-center bg-light'>
-                <div className='col-9 content px-2'>
-                    <div className='row justify-content-around'>
-                        <div className='col-2 sidebar'>
-                            <div className='filter-col'>
-                                <Filter setDisplay={setDisplayProducts}/>
-                            </div>
+            <div className="container">
+                <div className='row justify-content-between my-5'>
+                    <div className='col-2'>
+                        <div className='sidebar text-white p-3'>
+                            <Filter setDisplay={setDisplayProducts}/>
                         </div>
-                        <div className='col-9 products'>
-                            <div className='products-wrapper'>
-                                <div className='row'>{newProduct}</div>
+                    </div>
+                    <div className='col-9'>
+                        <div className='products'>
+                            <div className='card-group mb-5'>
+                                {newProduct}
                             </div>
                             <Pagination
                                 itemsPerPage={itemsPerPage}

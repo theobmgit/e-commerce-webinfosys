@@ -1,61 +1,29 @@
-.ecommerce-card{
-    height: 100%;
-    border: 2px solid rgb(236, 235, 235);
-    transition: box-shadow .3s;
-    .card-content{
-        background-color: white;
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-        .item-img{
-            margin-top : 1rem; 
-            height: 12rem;
-            img {
-                max-height: 12rem;
-                
-            }
-        }
-        .item-name{
-            a:link{
-                text-decoration: none;
-                color: rgb(134, 134, 134);
-            }
-            a:visited{
-                text-decoration: none;
-                color:rgb(160, 160, 160) ;
-            }
-            a:hover{
-                color: rgb(114, 80, 235);
-            }
+.card {
+  background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+  border-radius: 1rem;
+  transition: ease .3s;
+  color: black;
 
-            font-weight: bolder;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            white-space: nowrap;
-        }
-        
-        .rating{
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-        }
-        .product-price{
-            .item-price{
-                float: right;
-                margin: 10px;
-            }
-        }
-        .item-desc{
-            height: fit-content;
-            p{
-                text-overflow: ellipsis;
-                overflow: hidden;
-                white-space: nowrap;
-            }
-        }
+  .card-img-top {
+    background-color: white;
+    height: 12rem;
+
+    img {
+      max-height: 12rem;
     }
-    
+  }
+
+  .card-title {
+    height: max-content;
+  }
+
+  .card-text {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
 }
-.ecommerce-card:hover{
-    box-shadow: 0 0 11px rgba(33,33,33,.2);
+
+.card:hover {
+  box-shadow: 0 0 11px rgba(33, 33, 33, .2);
 }
