@@ -15,13 +15,14 @@ const Cart = () => {
         if (cart.length === 0) setIsEmpty(true)
         else setIsEmpty(false)
     }
-    const items = cart.map((item) => {
-        return <Item {...item} />
-    })
     useEffect(() => {
         checkCart()
     })
-    console.log(totalBill)
+
+    const items = cart.map((item) => {
+        return <Item {...item} />
+    })
+
     return (
         <>
             <Header/>
@@ -64,7 +65,8 @@ const Cart = () => {
                         </div>
                         <div className='opt-detail'>
                             <h3>Total</h3>
-                            <span className='fs-4 fw-bold item-price'>{Number(totalBill + (totalBill / 1000) * 5).toLocaleString()} VND</span>
+                            <span
+                                className='fs-4 fw-bold item-price'>{Number(totalBill + (totalBill / 1000) * 5).toLocaleString()} VND</span>
                         </div>
                         <Link to='/checkout/address'>
                             <button className='btn btn-wishlist'>Place Order</button>

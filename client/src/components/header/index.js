@@ -9,7 +9,8 @@ const Header = ({setDisplay}) => {
     const [searchInput, setSearchInput] = useState('')
     const [isCartChanged, setIsCartChanged] = useState(false)
 
-    const handleSearch = () => {
+    const handleSearch = (e) => {
+        e.preventDefault()
         if (searchInput === '') {
             return setDisplay(products)
         }
@@ -23,7 +24,6 @@ const Header = ({setDisplay}) => {
 
     useEffect(() => {
         setIsCartChanged(cart.length !== 0)
-        console.log(isCartChanged)
     }, [cart])
 
     return (

@@ -1,6 +1,6 @@
 import React from 'react'
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
-import Index from './components/home'
+import Home from './components/home/home'
 import ProductDetails from './components/details/index'
 import Products from './components/products/Products'
 import ErrorPage from './ErrorPage'
@@ -12,7 +12,7 @@ const AppRouter = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path='/' element={<Index/>}/>
+                <Route path='/' element={<Home/>}/>
                 <Route path='products' element={<Products/>}/>
                 <Route path='products/:id' element={<ProductDetails/>}/>
                 <Route path='checkout/cart' element={<Cart/>}/>

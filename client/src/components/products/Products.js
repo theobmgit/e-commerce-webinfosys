@@ -6,7 +6,7 @@ import Pagination from './pagination/index'
 import Header from '../header'
 import Footer from '../footer'
 import {useDispatch, useSelector} from 'react-redux'
-import {fetchData} from '../../redux/storeSlice'
+import {getAllProducts} from '../../redux/storeSlice'
 
 import './style.css'
 
@@ -18,12 +18,11 @@ const Products = () => {
     const [itemsPerPage] = useState(15)
 
     useEffect(() => {
-        dispatch(fetchData())
+        dispatch(getAllProducts())
         setDisplayProducts(products)
     }, [products.length])
 
     useEffect(() => {
-        console.log(displayProducts)
     }, [displayProducts])
 
     // Get current items

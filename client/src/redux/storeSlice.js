@@ -14,6 +14,10 @@ const storeSlice = createSlice({
             state.products = action.payload
         },
 
+        setProduct: (state, action) => {
+
+        },
+
         addToCart: (state, action) => {
             state.cart.push(action.payload)
             state.totalBill = state.totalBill + action.payload.price * action.payload.quantity
@@ -53,9 +57,14 @@ export const {
     setProducts, addToCart, removeFromCart, increaseQty, decreaseQty, setCart,
 } = storeSlice.actions
 
-export const fetchData = () => async (dispatch) => {
+export const getAllProducts = () => async (dispatch) => {
     const {data} = await axios.get('http://localhost:5000/products')
     dispatch(setProducts(data))
+}
+
+export const getProductById = async (id) => {
+    const {data} = await axios.get(`http://localhost:5000/products/${id}`)
+    return data
 }
 
 export const resetCart = (dispatch) => {
