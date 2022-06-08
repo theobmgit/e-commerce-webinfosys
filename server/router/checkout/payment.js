@@ -1,35 +1,36 @@
-import ZaloPay from 'zalopay';
+const express = require('express')
+const cors = require('cors')
+const router = express.Router()
+const app = express()
+const ZaloPay = require('zalopay').default;
+
+app.use(cors())
 
 const configs = {
-    app_id: '',
-    key1: '',
-    key2: ''
+    app_id: '2554',
+    key1: 'sdngKKJmqEMzvh5QQcdD2A9XBSKUNaYn',
+    key2: 'trMrHtvjo6myautxDUiAcYsVtaeQ8nhf',
+    test: true
 };
 
-const zalopay: ZaloPay = new ZaloPay(configs);
+const zalopay = new ZaloPay(configs);
 
 // Get Banks
-const banks: any = zalopay.getListMerchantBanks();
-// [
-//   {
-//     bankcode: 'NASB',
-//     name: 'BAC A BANK',
-//     displayorder: 0,
-//     pmcid: 39,
-//     minamount: 10000,
-//     maxamount: 250000000
-//   },...
-// ]
+router.get('/banks', async (req, res) => {
+    const banks = await zalopay.getListMerchantBanks();
+    res.status(200).send(banks)
+})
 
 // Create Transaction
 const items = [
     {
-        itemid: '',
-        itemname: '',
-        itemprice: 1000,
+        itemid: '9001',
+        itemname: 'Bluetooth Apple AirPods 2',
+        itemprice: 3350000,
         itemquantity: 1
     }
 ];
+
 const transaction = {
     /**
      * Required
@@ -58,55 +59,80 @@ const transaction = {
     email: '', // Email của người dùng
     address: '' // Địa chỉ của người dùng
 };
-const data: any = await zalopay.createTransaction(transaction);
-// {
-//   return_code: 1
-//   return_message: '', // Mô tả chi tiết thông tin mã lỗi
-//   sub_return_code: 1,
-//   sub_return_message: '',
-//   order_url: '', // Dùng để tạo QR code hoặc gọi chuyển tiếp sang trang cổng ZaloPay
-//   app_trans_id: '' // Dùng để truy vấn trạng thái thanh toán của đơn hàng
-// }
 
-// Handle callback_url
-app.post('/callback_url', (req, res) => {
+/*
+{
+  return_code: 1
+  return_message: '', // Mô tả chi tiết thông tin mã lỗi
+  sub_return_code: 1,
+  sub_return_message: '',
+  order_url: '', // Dùng để tạo QR code hoặc gọi chuyển tiếp sang trang cổng ZaloPay
+  app_trans_id: '' // Dùng để truy vấn trạng thái thanh toán của đơn hàng
+}
+*/
+router.post('/transaction', async (req, res) => {
+    const transaction = req.body
+    const data = await zalopay.createTransaction(transaction);
+    res.status(202).send(data);
+})
+
+/* Handle callback_url
+{
+  'code': '',
+  'message': ''
+}
+*/
+router.post('/callback_url', (req, res) => {
     const data = zalopay.handleCallback(req.body);
-    res.json(data); // { 'code': '', 'message': '' }
+    res.status(202).send(data);
 });
 
+/* Get Transaction Status
+  {
+      return_code: 1,
+      return_message: '', // Thông tin trạng thái đơn hàng
+      sub_return_code: 1,
+      sub_return_message: '',
+      is_processing: true,
+      amount: 123, // Số tiền ứng dụng nhận được (chỉ có ý nghĩa khi thanh toán thành công)
+      zp_trans_id: // Mã giao dịch của ZaloPay
+  }
+*/
+router.get('/transaction/:id', (req, res) => {
+    const {id} = req.params
+    const data = zalopay.getTransactionStatus(id);
+    res.json(data);
+})
 
-// Get Transaction Status
-const app_trans_id: string = '';
-const data: any = await zalopay.getTransactionStatus(app_trans_id);
-// {
-//   return_code: 1,
-//   return_message: '', // Thông tin trạng thái đơn hàng
-//   sub_return_code: 1,
-//   sub_return_message: '',
-//   is_processing: true,
-//   amount: 123, // Số tiền ứng dụng nhận được (chỉ có ý nghĩa khi thanh toán thành công)
-//   zp_trans_id: // Mã giao dịch của ZaloPay
-// }
+/* Refund
+{
+  return_code: 1,
+  return_message: '', // Thông tin trạng thái đơn hàng
+  sub_return_code: 1,
+  sub_return_message: '',
+  refund_id: '' // Mã giao dịch hoàn tiền của ZaloPay, cần lưu lại để đối chiếu
+}
+*/
+router.post('/refund', (req, res) => {
+    const zp_trans_id = '';
+    const amount = 0;
+    const description = ''; // optional
+    const data = zalopay.refund(zp_trans_id, amount, description);
+    res.json(data)
+})
 
-// Refund
-const zp_trans_id: string = '';
-const amount: number = 0;
-const description: string = ''; // optional
-const data: any = await zalopay.refund(zp_trans_id, amount, description);
-// {
-//   return_code: 1,
-//   return_message: '', // Thông tin trạng thái đơn hàng
-//   sub_return_code: 1,
-//   sub_return_message: '',
-//   refund_id: '' // Mã giao dịch hoàn tiền của ZaloPay, cần lưu lại để đối chiếu
-// }
+/* Get Refund Status
+{
+  return_code: 1,
+  return_message: '', // Thông tin trạng thái đơn hàng
+  sub_return_code: 1,
+  sub_return_message: '',
+}
+*/
+router.get('/refund/:id', (req, res) => {
+    const {id} = req.params;
+    const data = zalopay.getRefundStatus(id);
+    res.json(data)
+})
 
-// Get Refund Status
-const m_refund_id: string = '';
-const data: any = await zalopay.getRefundStatus(m_refund_id);
-// {
-//   return_code: 1,
-//   return_message: '', // Thông tin trạng thái đơn hàng
-//   sub_return_code: 1,
-//   sub_return_message: '',
-// }
+module.exports = router

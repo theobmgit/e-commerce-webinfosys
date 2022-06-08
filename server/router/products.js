@@ -3,9 +3,7 @@ const cors = require('cors')
 const router = express.Router()
 const db = require('../config/db')
 const app = express()
-
 app.use(cors())
-
 router.get('/', (req, res) => {
     db.query(
         `select Product.product_id,

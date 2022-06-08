@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const path = require('path')
 const products = require('./router/products')
 const address = require('./router/checkout/address')
+const payment = require('./router/checkout/payment')
 const app = express()
 const PORT = 5000
 
@@ -16,9 +17,12 @@ app.use(bodyParser.json())
 app.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname, './index.html'))
 })
+
 app.use('/products', products)
 
 app.use('/checkout/address', address)
+
+app.use('/checkout/payment', payment)
 
 app.all('*', (req, res) => {
     res.status(404).send('resource not found')

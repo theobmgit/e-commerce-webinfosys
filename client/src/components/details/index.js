@@ -1,10 +1,11 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
 import './style.css'
 import {useDispatch, useSelector} from 'react-redux'
 import {addToCart} from '../../redux/storeSlice'
 import Header from '../header'
 import Footer from '../footer'
+import axios from "axios";
 
 const ProductDetails = () => {
     const {id} = useParams()

@@ -28,6 +28,7 @@ const Address = () => {
                 {address: userInfo, order: cart, totalBill: totalBill}
             )
         }
+        else alert("Fill in the required fields")
     }
 
     return (

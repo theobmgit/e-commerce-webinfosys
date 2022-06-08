@@ -5,7 +5,7 @@ import Header from "../../header";
 
 const PaymentSelect = () => {
     useEffect(() => {
-        document.title = "ZaloPay - Thanh Toán QR"
+        document.title = "ZaloPay - Thanh Toán"
     }, [])
 
     const handleSubmit = async (e) => {
